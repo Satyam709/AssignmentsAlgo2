@@ -7,6 +7,7 @@
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BaseballElimination.java" beforeDir="false" afterPath="$PROJECT_DIR$/BaseballElimination.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teams32.txt" beforeDir="false" afterPath="$PROJECT_DIR$/teams32.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +131,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1721570746335</updated>
-      <workItem from="1721570748242" duration="10349000" />
+      <workItem from="1721570748242" duration="13526000" />
     </task>
     <servers />
   </component>

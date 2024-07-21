@@ -4,8 +4,10 @@ import edu.princeton.cs.algs4.FordFulkerson;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class BaseballElimination {
     // create a baseball division from given filename in format specified below
@@ -18,6 +20,7 @@ public class BaseballElimination {
     // private final int totalRem;
     private final int[][] schedule;
     private Iterable<String> subset;
+    private final String[] intToTeam;
 
     public BaseballElimination(String filename) {
         if (filename == null) throw new IllegalArgumentException("Invalid file name");
@@ -25,17 +28,20 @@ public class BaseballElimination {
         In in = new In(filename);
         totalTeams = Integer.parseInt(in.readLine());
         teams = new HashMap<>(totalTeams);
+        intToTeam = new String[totalTeams];
         wins = new int[totalTeams];
         loses = new int[totalTeams];
         rem = new int[totalTeams];
         schedule = new int[totalTeams][totalTeams];
         subset = null;
 
-        System.out.println("printing:");
+        // System.out.println("printing:");
 
         for (int i = 0; i < totalTeams; i++) {
-            String[] cl = in.readLine().split("\\s+");
+            String[] cl = in.readLine().trim().split("\\s+");
+            // System.out.println(Arrays.toString(cl));
             teams.put(cl[0], i);
+            intToTeam[i] = cl[0];
             wins[i] = Integer.parseInt(cl[1]);
             loses[i] = Integer.parseInt(cl[2]);
             rem[i] = Integer.parseInt(cl[3]);
@@ -43,16 +49,16 @@ public class BaseballElimination {
                 schedule[i][j] = Integer.parseInt(cl[4 + j]);
         }
         // this.totalRem = totalRem;
-        System.out.println("wins=" + Arrays.toString(wins));
-        System.out.println("lose=" + Arrays.toString(loses));
-        System.out.println("rem=" + Arrays.toString(rem));
-        System.out.println("map=" + teams);
-        System.out.println("schedule:");
-        for (int[] i : schedule) {
-            for (int j : i)
-                System.out.print(j + " ");
-            System.out.println();
-        }
+        // System.out.println("wins=" + Arrays.toString(wins));
+        // System.out.println("lose=" + Arrays.toString(loses));
+        // System.out.println("rem=" + Arrays.toString(rem));
+        // System.out.println("map=" + teams);
+        // System.out.println("schedule:");
+        // for (int[] i : schedule) {
+        //     for (int j : i)
+        //         System.out.print(j + " ");
+        //     System.out.println();
+        // }
     }
 
     public int numberOfTeams()                        // number of teams
@@ -97,13 +103,13 @@ public class BaseballElimination {
     private boolean compute(String team) {
         int totalV = totalTeams + 1 + (totalTeams - 1) * (totalTeams - 2)
                 / 2; // +1 for source because one extra for tail is counted in totalTeams
-        System.out.println("total vetices = " + totalV);
+        // System.out.println("total vetices = " + totalV);
         if (teams.get(team) == null)
             throw new IllegalArgumentException("team " + team + " not found");
         int queryTeam = teams.get(team);
         FlowNetwork net = new FlowNetwork(totalV);
         int s = 0, t = totalV - 1, totalRem = 0;
-        int count = 0;
+        int count = totalTeams;
         for (int i = 0; i < totalTeams; i++) {
             int capacity = rem[queryTeam] + wins[queryTeam] - wins[i];
             if (capacity < 0)
@@ -117,19 +123,30 @@ public class BaseballElimination {
                         totalRem += schedule[i][j];
                         net.addEdge(new FlowEdge(s, count,
                                                  schedule[i][j])); // storing s->combination of ij+1 avoid conflict with vertex entry as unique 1d notation
-                        net.addEdge(new FlowEdge(count, i,
+                        net.addEdge(new FlowEdge(count, i + 1,
                                                  Integer.MAX_VALUE)); // these 2 lines add the combinations to their respective teams no with infinite cap
-                        net.addEdge(new FlowEdge(count, j, Integer.MAX_VALUE));
+                        net.addEdge(new FlowEdge(count, j + 1, Integer.MAX_VALUE));
                     }
                 }
             }
         }
-        System.out.println(count);
-        System.out.println(net);
+        // System.out.println(count);
+        // System.out.println(net);
         FordFulkerson algo = new FordFulkerson(net, s, t);
-        System.out.println("algoValue = " + algo.value());
-        System.out.println("total rem = " + totalRem);
-        return algo.value() != totalRem; // if all matches rem flowed through
+        // System.out.println("algoValue = " + algo.value());
+        // System.out.println("total rem = " + totalRem);
+        boolean isEle = algo.value() != totalRem; // if all matches rem flowed through
+        if (isEle) {
+            ArrayList<String> teamSet = new ArrayList<>(totalTeams);
+            for (int i = 1; i <= totalTeams; i++) {
+                String teamm = intToTeam[i - 1];
+                if (algo.inCut(i))
+                    teamSet.add(teamm);
+            }
+            this.subset = teamSet;
+        }
+        else this.subset = null;
+        return isEle;
     }
 
     public boolean isEliminated(String team)              // is given team eliminated?
@@ -142,13 +159,18 @@ public class BaseballElimination {
     {
         if (teams.get(team) == null)
             throw new IllegalArgumentException("team " + team + " not found");
-        return subset;
+        compute(team);
+        Iterable<String> temp = subset;
+        subset = null;
+        return temp;
     }
 
     public static void main(String[] args) {
         BaseballElimination division = new BaseballElimination(args[0]);
+        List<String> ele = new LinkedList<>();
         for (String team : division.teams()) {
             if (division.isEliminated(team)) {
+                ele.add(team);
                 StdOut.print(team + " is eliminated by the subset R = { ");
                 for (String t : division.certificateOfElimination(team)) {
                     StdOut.print(t + " ");
@@ -159,5 +181,6 @@ public class BaseballElimination {
                 StdOut.println(team + " is not eliminated");
             }
         }
+        System.out.println("Elementaed teams are :" + ele);
     }
 }
