@@ -5,6 +5,7 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,7 +27,10 @@ public class BaseballElimination {
         if (filename == null) throw new IllegalArgumentException("Invalid file name");
 
         In in = new In(filename);
-        totalTeams = Integer.parseInt(in.readLine());
+        String tmp = in.readLine();
+        if (tmp == null)
+            throw new IllegalArgumentException();
+        totalTeams = Integer.parseInt(tmp);
         teams = new HashMap<>(totalTeams);
         intToTeam = new String[totalTeams];
         wins = new int[totalTeams];
@@ -38,7 +42,10 @@ public class BaseballElimination {
         // System.out.println("printing:");
 
         for (int i = 0; i < totalTeams; i++) {
-            String[] cl = in.readLine().trim().split("\\s+");
+            tmp = in.readLine();
+            if (tmp == null)
+                throw new IllegalArgumentException();
+            String[] cl = tmp.trim().split("\\s+");
             // System.out.println(Arrays.toString(cl));
             teams.put(cl[0], i);
             intToTeam[i] = cl[0];
@@ -49,16 +56,16 @@ public class BaseballElimination {
                 schedule[i][j] = Integer.parseInt(cl[4 + j]);
         }
         // this.totalRem = totalRem;
-        // System.out.println("wins=" + Arrays.toString(wins));
-        // System.out.println("lose=" + Arrays.toString(loses));
-        // System.out.println("rem=" + Arrays.toString(rem));
-        // System.out.println("map=" + teams);
-        // System.out.println("schedule:");
-        // for (int[] i : schedule) {
-        //     for (int j : i)
-        //         System.out.print(j + " ");
-        //     System.out.println();
-        // }
+        System.out.println("wins=" + Arrays.toString(wins));
+        System.out.println("lose=" + Arrays.toString(loses));
+        System.out.println("rem=" + Arrays.toString(rem));
+        System.out.println("map=" + teams);
+        System.out.println("schedule:");
+        for (int[] i : schedule) {
+            for (int j : i)
+                System.out.print(j + " ");
+            System.out.println();
+        }
     }
 
     public int numberOfTeams()                        // number of teams
@@ -103,44 +110,52 @@ public class BaseballElimination {
     private boolean compute(String team) {
         int totalV = totalTeams + 1 + (totalTeams - 1) * (totalTeams - 2)
                 / 2; // +1 for source because one extra for tail is counted in totalTeams
-        // System.out.println("total vetices = " + totalV);
+        System.out.println("total vetices = " + totalV);
         if (teams.get(team) == null)
             throw new IllegalArgumentException("team " + team + " not found");
         int queryTeam = teams.get(team);
         FlowNetwork net = new FlowNetwork(totalV);
         int s = 0, t = totalV - 1, totalRem = 0;
-        int count = totalTeams;
-        for (int i = 0; i < totalTeams; i++) {
+        int count = totalTeams - 1;
+        for (int i = 0, k = 0; i < totalTeams; i++) {
+            if (i == queryTeam) continue;
+            k++; // indicating team no
             int capacity = rem[queryTeam] + wins[queryTeam] - wins[i];
-            if (capacity < 0)
-                return false;
+            if (capacity < 0) {
+                ArrayList<String> teamSet = new ArrayList<>(1);
+                teamSet.add(intToTeam[i]);
+                this.subset = teamSet;
+                return true;
+            }
             net.addEdge(
-                    new FlowEdge(i + 1, t, capacity)); // indexing vertex like 1,2,3..
+                    new FlowEdge(k, t, capacity)); // indexing vertex like 1,2,3..
             for (int j = 0; j < totalTeams; j++) {
                 if (j > i) {
-                    if (j != queryTeam && i != queryTeam) {
+                    if (j != queryTeam) {
                         count++; // current combo no.
                         totalRem += schedule[i][j];
                         net.addEdge(new FlowEdge(s, count,
                                                  schedule[i][j])); // storing s->combination of ij+1 avoid conflict with vertex entry as unique 1d notation
-                        net.addEdge(new FlowEdge(count, i + 1,
+                        net.addEdge(new FlowEdge(count, k,
                                                  Integer.MAX_VALUE)); // these 2 lines add the combinations to their respective teams no with infinite cap
-                        net.addEdge(new FlowEdge(count, j + 1, Integer.MAX_VALUE));
+                        net.addEdge(
+                                new FlowEdge(count, j < queryTeam ? j + 1 : j, Integer.MAX_VALUE));
                     }
                 }
             }
         }
-        // System.out.println(count);
-        // System.out.println(net);
+        System.out.println(count);
+        System.out.println(net);
         FordFulkerson algo = new FordFulkerson(net, s, t);
-        // System.out.println("algoValue = " + algo.value());
-        // System.out.println("total rem = " + totalRem);
+        System.out.println("algoValue = " + algo.value());
+        System.out.println("total rem = " + totalRem);
         boolean isEle = algo.value() != totalRem; // if all matches rem flowed through
         if (isEle) {
             ArrayList<String> teamSet = new ArrayList<>(totalTeams);
-            for (int i = 1; i <= totalTeams; i++) {
-                String teamm = intToTeam[i - 1];
-                if (algo.inCut(i))
+            for (int i = 0; i < totalTeams; i++) {
+                if (i == queryTeam) continue;
+                String teamm = intToTeam[i];
+                if (algo.inCut(i < queryTeam ? i + 1 : i))
                     teamSet.add(teamm);
             }
             this.subset = teamSet;
