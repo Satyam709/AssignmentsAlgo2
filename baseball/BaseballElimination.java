@@ -5,7 +5,6 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,14 +38,12 @@ public class BaseballElimination {
         schedule = new int[totalTeams][totalTeams];
         subset = null;
 
-        // System.out.println("printing:");
-
         for (int i = 0; i < totalTeams; i++) {
             tmp = in.readLine();
             if (tmp == null)
                 throw new IllegalArgumentException();
             String[] cl = tmp.trim().split("\\s+");
-            // System.out.println(Arrays.toString(cl));
+
             teams.put(cl[0], i);
             intToTeam[i] = cl[0];
             wins[i] = Integer.parseInt(cl[1]);
@@ -54,17 +51,6 @@ public class BaseballElimination {
             rem[i] = Integer.parseInt(cl[3]);
             for (int j = 0; j < totalTeams; j++)
                 schedule[i][j] = Integer.parseInt(cl[4 + j]);
-        }
-        // this.totalRem = totalRem;
-        System.out.println("wins=" + Arrays.toString(wins));
-        System.out.println("lose=" + Arrays.toString(loses));
-        System.out.println("rem=" + Arrays.toString(rem));
-        System.out.println("map=" + teams);
-        System.out.println("schedule:");
-        for (int[] i : schedule) {
-            for (int j : i)
-                System.out.print(j + " ");
-            System.out.println();
         }
     }
 
@@ -110,7 +96,7 @@ public class BaseballElimination {
     private boolean compute(String team) {
         int totalV = totalTeams + 1 + (totalTeams - 1) * (totalTeams - 2)
                 / 2; // +1 for source because one extra for tail is counted in totalTeams
-        System.out.println("total vetices = " + totalV);
+
         if (teams.get(team) == null)
             throw new IllegalArgumentException("team " + team + " not found");
         int queryTeam = teams.get(team);
@@ -144,11 +130,7 @@ public class BaseballElimination {
                 }
             }
         }
-        System.out.println(count);
-        System.out.println(net);
         FordFulkerson algo = new FordFulkerson(net, s, t);
-        System.out.println("algoValue = " + algo.value());
-        System.out.println("total rem = " + totalRem);
         boolean isEle = algo.value() != totalRem; // if all matches rem flowed through
         if (isEle) {
             ArrayList<String> teamSet = new ArrayList<>(totalTeams);
