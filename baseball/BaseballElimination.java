@@ -17,6 +17,7 @@ public class BaseballElimination {
     private final int[] rem;
     // private final int totalRem;
     private final int[][] schedule;
+    private Iterable<String> subset;
 
     public BaseballElimination(String filename) {
         if (filename == null) throw new IllegalArgumentException("Invalid file name");
@@ -28,6 +29,7 @@ public class BaseballElimination {
         loses = new int[totalTeams];
         rem = new int[totalTeams];
         schedule = new int[totalTeams][totalTeams];
+        subset = null;
 
         System.out.println("printing:");
 
@@ -95,31 +97,39 @@ public class BaseballElimination {
     private boolean compute(String team) {
         int totalV = totalTeams + 1 + (totalTeams - 1) * (totalTeams - 2)
                 / 2; // +1 for source because one extra for tail is counted in totalTeams
+        System.out.println("total vetices = " + totalV);
         if (teams.get(team) == null)
             throw new IllegalArgumentException("team " + team + " not found");
         int queryTeam = teams.get(team);
         FlowNetwork net = new FlowNetwork(totalV);
-        int s = 0, t = totalTeams * totalTeams, totalRem = 0;
+        int s = 0, t = totalV - 1, totalRem = 0;
+        int count = 0;
         for (int i = 0; i < totalTeams; i++) {
             int capacity = rem[queryTeam] + wins[queryTeam] - wins[i];
             if (capacity < 0)
                 return false;
-            net.addEdge(new FlowEdge(i, t, capacity));
+            net.addEdge(
+                    new FlowEdge(i + 1, t, capacity)); // indexing vertex like 1,2,3..
             for (int j = 0; j < totalTeams; j++) {
                 if (j > i) {
                     if (j != queryTeam && i != queryTeam) {
+                        count++; // current combo no.
                         totalRem += schedule[i][j];
-                        net.addEdge(new FlowEdge(s, i * totalTeams + j,
+                        net.addEdge(new FlowEdge(s, count,
                                                  schedule[i][j])); // storing s->combination of ij+1 avoid conflict with vertex entry as unique 1d notation
-                        net.addEdge(new FlowEdge(i * totalTeams + j, i,
+                        net.addEdge(new FlowEdge(count, i,
                                                  Integer.MAX_VALUE)); // these 2 lines add the combinations to their respective teams no with infinite cap
-                        net.addEdge(new FlowEdge(i * totalTeams + j, j, Integer.MAX_VALUE));
+                        net.addEdge(new FlowEdge(count, j, Integer.MAX_VALUE));
                     }
                 }
             }
         }
+        System.out.println(count);
+        System.out.println(net);
         FordFulkerson algo = new FordFulkerson(net, s, t);
-        return algo.value() == totalRem; // if all matches rem flowed through
+        System.out.println("algoValue = " + algo.value());
+        System.out.println("total rem = " + totalRem);
+        return algo.value() != totalRem; // if all matches rem flowed through
     }
 
     public boolean isEliminated(String team)              // is given team eliminated?
@@ -132,7 +142,7 @@ public class BaseballElimination {
     {
         if (teams.get(team) == null)
             throw new IllegalArgumentException("team " + team + " not found");
-        return null;
+        return subset;
     }
 
     public static void main(String[] args) {
