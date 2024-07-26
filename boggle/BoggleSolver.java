@@ -23,9 +23,7 @@ public class BoggleSolver {
     // (You can assume each word in the dictionary contains only the uppercase letters A through Z.)
     public BoggleSolver(String[] dictionary) {
 
-        if (dictionary == null)
-            throw new IllegalArgumentException("Invalid dictionary");
-
+        if (dictionary == null) throw new IllegalArgumentException("Invalid dictionary");
         matches = new HashSet<>();
         dictionarySet = new TrieSET();
         for (String i : dictionary)
@@ -37,7 +35,7 @@ public class BoggleSolver {
     public Iterable<String> getAllValidWords(BoggleBoard board) {
 
         if (board == null) throw new IllegalArgumentException("Invalid board");
-
+        matches = new HashSet<>();
         for (int i = 0; i < board.rows(); i++) {
             for (int j = 0; j < board.cols(); j++) {
                 boolean[][] marked = new boolean[board.rows()][board.cols()];
@@ -53,10 +51,8 @@ public class BoggleSolver {
         marked[i][j] = true;
         // System.out.println("i=" + i + "j=" + j);
         char ch = board.getLetter(i, j);
-        if (ch == 'Q')
-            edgeTo.append("QU");
-        else
-            edgeTo.append(ch);
+        if (ch == 'Q') edgeTo.append("QU");
+        else edgeTo.append(ch);
 
         String cw = edgeTo.toString();
         // System.out.println("Current prefix : " + cw);
@@ -66,7 +62,7 @@ public class BoggleSolver {
         // }
 
         // if key exists
-        if (dictionarySet.contains(cw)) {
+        if (cw.length() >= 3) if (dictionarySet.contains(cw)) {
             matches.add(cw);
         }
         else {
@@ -79,8 +75,7 @@ public class BoggleSolver {
         }
         for (int k = i - 1; k <= i + 1; k++) {
             for (int m = j - 1; m <= j + 1; m++) {
-                if (i == k && j == m)
-                    continue;
+                if (i == k && j == m) continue;
                 // adjacent chars for dfs :
                 if (isValid(board, k, m) && !marked[k][m]) {
                     findWordsDFS(board, marked, new StringBuilder(edgeTo), k, m);
@@ -98,8 +93,7 @@ public class BoggleSolver {
     // (You can assume the word contains only the uppercase letters A through Z.)
     public int scoreOf(String word) {
         if (word == null) throw new IllegalArgumentException("Invalid word");
-        if (!dictionarySet.contains(word))
-            return 0;
+        if (!dictionarySet.contains(word)) return 0;
         int len = word.length();
         if (len < 3) return 0;
         if (len < 5) return 1;
