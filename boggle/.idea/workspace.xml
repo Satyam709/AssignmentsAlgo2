@@ -5,90 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeInsightSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/lift.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/externalDependencies.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/file.template.settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fileTemplates/includes/File Header.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/AnnotationType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/Class.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/Enum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/Interface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/fileTemplates/internal/package-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/findbugs-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml.old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/algs4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/checkstyle-coursera.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/checkstyle-suppressions.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.lift/spotbugs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Algorithms, Part II.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BoggleBoard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BoggleGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-16q.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-antidisestablishmentarianisms.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-aqua.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-couscous.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-diagonal.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-dichlorodiphenyltrichloroethanes.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-dodo.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-estrangers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-horizontal.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-inconsequentially.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-noon.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-pneumonoultramicroscopicsilicovolcanoconiosis.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points0.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points100.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points1000.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points1111.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points1250.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points13464.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points1500.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points200.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points2000.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points26539.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points300.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points400.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points4410.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points4527.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points4540.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points500.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points750.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-points777.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-q.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-quinquevalencies.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-qwerty.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-rotavator.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board-vertical.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/board4x4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-16q.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-2letters.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-algs4.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-common.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-enable2k.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-nursery.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-shakespeare.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-sowpods.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-twl06.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-yawl.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dictionary-zingarelli2005.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BoggleSolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/BoggleSolver.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +26,11 @@
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
     <option name="SCHEME" value="Project" />
   </component>
   <component name="FindBugs-IDEA-Workspace">
@@ -167,8 +91,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.BoggleSolver.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "boggle",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/boggle",
     "node.js.detected.package.eslint": "true",
@@ -179,6 +104,20 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="BoggleSolver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="BoggleSolver" />
+      <module name="Algorithms, Part II" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.BoggleSolver" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -197,6 +136,7 @@
       <workItem from="1721995173386" duration="95000" />
       <workItem from="1721995292324" duration="23000" />
       <workItem from="1721996132864" duration="304000" />
+      <workItem from="1721996447001" duration="14866000" />
     </task>
     <servers />
   </component>
@@ -238,5 +178,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
