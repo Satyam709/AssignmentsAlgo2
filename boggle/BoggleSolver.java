@@ -49,17 +49,12 @@ public class BoggleSolver {
     private void findWordsDFS(BoggleBoard board, boolean[][] marked, StringBuilder edgeTo, int i,
                               int j) {
         marked[i][j] = true;
-        // System.out.println("i=" + i + "j=" + j);
+
         char ch = board.getLetter(i, j);
         if (ch == 'Q') edgeTo.append("QU");
         else edgeTo.append(ch);
 
         String cw = edgeTo.toString();
-        // System.out.println("Current prefix : " + cw);
-        // if (cw.contains("AID")) {
-        //     System.out.println("Aid Present");
-        //     System.exit(0);
-        // }
 
         // if key exists
         if (cw.length() >= 3) if (dictionarySet.contains(cw)) {
@@ -117,4 +112,3 @@ public class BoggleSolver {
         StdOut.println("Score = " + score);
     }
 }
-
