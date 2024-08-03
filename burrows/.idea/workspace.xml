@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c1e4f978-b3bd-4ae1-84e9-9e1170bce808" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/BurrowsWheeler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CircularSuffixArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MoveToFront.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jk.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Algorithms__Part_I.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Algorithms, Part II.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Algorithms, Part II.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BurrowsWheeler.java" beforeDir="false" afterPath="$PROJECT_DIR$/BurrowsWheeler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CircularSuffixArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/CircularSuffixArray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoveToFront.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoveToFront.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +96,7 @@
   "keyToString": {
     "Application.MoveToFront.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "burrows",
+    "git-widget-placeholder": "experimenting",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -181,5 +179,27 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MoveToFront.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
